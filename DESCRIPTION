@@ -1,0 +1,33 @@
+Package: ScTree
+Type: Package
+Title: Scalable and robust mechanistic integration of epidemiological and genomic data for transmission tree inference
+Version: 1.1.0
+Date: 2024-11-15
+Authors@R: c(
+    person(given = "Waddel",
+           family = "Hannah",
+           role = c("aut", "cre"),
+           email = "hannah.b.waddel@emory.edu"),
+    person(given = "Katia", 
+	family = "Koelle", 
+	role = "aut"),
+    person(given = "Max S.Y.", 
+		family = "Lau", 
+		role = "aut", 
+		email="msy.lau@emory.edu")           
+    )
+Maintainer@R: person(given = "Hannah",
+                     family = "Waddel",
+                     email = "hannah.b.waddel@emory.edu")
+Description: Scalable and robust mechanistic integration of epidemiological and genomic data for transmission tree inference. Implementation of inference procedure described in Waddel et al., simulation from the epidemiological-evolutionary model from described in Lau et al. (2015).
+License: GPL (>= 2) | file LICENSE
+Imports: ape, coda, grDevices, Rcpp (>= 1.0.0), utils
+LinkingTo: Rcpp, BH
+SystemRequirements: C++11
+NeedsCompilation: yes
+LazyData: true
+RoxygenNote: 7.2.3
+Encoding: UTF-8
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+Depends: R (>= 3.5.0)
