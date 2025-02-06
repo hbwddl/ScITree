@@ -1,10 +1,13 @@
 #!/usr/bin/env Rscript
-library(BORIS2)
+library(ScTree)
 library(ggplot2)
+library(ape)
 
-seed <- 108
-cluster <- T
-params_file <- T
+root_dir <- "./REPLACE/"
+
+seed <- 1
+cluster <- F
+params_file <- F
 long_run <- T
 simonly <- F
 
@@ -109,7 +112,7 @@ if(!is.na(seed) & !cluster){
     seedpaste <- paste0("0",seed)
   }
   
-  dirname <- paste0("~/Documents/Research/Phylodynamics/BORIS2_Results/sim_test_seed_",seedpaste)
+  dirname <- paste0(root_dir,"sim_test_seed_",seedpaste)
   if(!dir.exists(dirname)){
     dir.create(dirname)
   }
@@ -959,11 +962,11 @@ speed_values <- data.frame(run_speed=difftime(time0,time1,units="mins"),format="
 save(speed_values,file="speed_test_results.RData") 
 
 if(!cluster){
-  source("~/Documents/Research/Phylodynamics/BORIS2/test/parameter_capture.R")
-  sink(file="posterior_tree_capture.txt")
-  source("~/Documents/Research/Phylodynamics/BORIS2/test/posterior_tree_capture.R")
-  sink(NULL)
-  source("~/Documents/Research/Phylodynamics/BORIS2/test/bubble_plot.R")
+  # source("~/Documents/Research/Phylodynamics/BORIS2/test/parameter_capture.R")
+  # sink(file="posterior_tree_capture.txt")
+  # source("~/Documents/Research/Phylodynamics/BORIS2/test/posterior_tree_capture.R")
+  # sink(NULL)
+  # source("~/Documents/Research/Phylodynamics/BORIS2/test/bubble_plot.R")
 } else{
   ### Calculate parameter traceplots
   ## set to Infer_Test directory if running individually
