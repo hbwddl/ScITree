@@ -5,7 +5,7 @@ This repository contains the R package (developed with Rcpp) to fit the ScTree m
 
 ### To build and load the package via RStudio:
 
-- Load the ScITree.Rproj file, then build the package in the ``build'' tab and install.
+- Load the ScITree.Rproj file, then build the package in the "build" tab and install.
 
 ### To build the package from source:
 
