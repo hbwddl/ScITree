@@ -1,2 +1,0 @@
-t_range,t_back,t_bound_hi,rate_exp_prior,ind_n_base_part,n_base_part,alpha_hi,beta_hi,mu_lat_hi,var_lat_lo,var_lat_hi,c_hi,d_hi,k_1_lo,k_1_hi,mu_1_hi,mu_2_hi,p_ber_hi,phi_inf1_hi,phi_inf2_hi,rho_susc1_hi,rho_susc2_hi,nu_inf_lo,nu_inf_hi,tau_susc_lo,tau_susc_hi,beta_m_hi,trace_window
-20,5,40,0.001,0,8000,0.1,30,50,0.1,50,100,100,0,10,44,0.1,1,500,500,500,500,0,1,0,1,5,20
