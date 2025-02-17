@@ -4,14 +4,11 @@ library(coda)
 
 raw_params <- read.table("./outputs/parameters_current.log",header=T)
 true_params <- read.csv("../Sim_Test/inputs/parameters_key.csv",header=T)
+aux_params <- read.csv("../Sim_Test/inputs/parameters_other.csv",header=T)
 t_sample <- read.csv("./inputs/t_sample.csv",header=F)[,1]
-
-load("../run_settings.RData")
 
 epi_sim <- read.csv("../Sim_Test/outputs/epi_sim.csv")
 n_infect_observed <- min(c(sum(epi_sim$t_e <= pars.aux$t_max),sum(t_sample <= pars.aux$t_max)))
-
-# params_current <- raw_params[run_params$nburn:nrow(raw_params),]
 
 params_current <- raw_params[(nrow(raw_params)*2/3):nrow(raw_params),]
 
@@ -19,7 +16,7 @@ params_current <- raw_params
 
 params.mcmc <- as.mcmc(true_params)
 
-pdf(paste0("params_posterior_seed",run_params$seed,".pdf"),width=15,height=15)
+pdf("params_posterior_traceplots.pdf",width=15,height=15)
 par(mfrow=c(3,3))
 
 hist(params_current$alpha,main=paste0("alpha = ",true_params$alpha),xlab="")
@@ -61,11 +58,11 @@ if("lambda" %in% names(params_current)){
       
       lambda_mle <- sum(nbpdiffs,na.rm=T)/sum(deltats,na.rm=T)
     } else{
-      lambda_mle <- (true_params$mu_1+2*true_params$mu_2)*run_params$nbase
+      lambda_mle <- (true_params$mu_1+2*true_params$mu_2)*aux_params$n_base
     }
     
     hist(params_current$lambda,main=paste0("lambda"),xlab="")
-    abline(v=(true_params$mu_1+2*true_params$mu_2)*run_params$nbase,col="blue",lty=2)
+    abline(v=(true_params$mu_1+2*true_params$mu_2)*aux_params$n_base,col="blue",lty=2)
     abline(v=lambda_mle,col="blue",lty=1)
 
 } else{
@@ -103,7 +100,7 @@ abline(h=true_params$d,col="blue")
 
 if("lambda" %in% names(params_current)){
   plot(params_current$lambda,main=paste0("lambda"),xlab="",type="l")
-  abline(h=(true_params$mu_1+2*true_params$mu_2)*run_params$nbase,col="blue",lty=2)
+  abline(h=(true_params$mu_1+2*true_params$mu_2)*aux_params$n_base,col="blue",lty=2)
   abline(h=lambda_mle,col="blue",lty=1)
 } else{
   plot(params_current$mu_1,main=paste0("Mu_1"),xlab="",type="l")
@@ -121,11 +118,11 @@ dev.off()
 
 t_e_raw <- read.csv("./outputs/t_e_current.csv",header=F)
 
-run_params$nburn = 0
+n_burnin = 0
 
-t_e_current <- t_e_raw[(nrow(t_e_raw)-(nrow(t_e_raw)-run_params$nburn)):nrow(t_e_raw),]
+t_e_current <- t_e_raw[(nrow(t_e_raw)-(nrow(t_e_raw)-n_burnin)):nrow(t_e_raw),]
 
-pdf(file=paste0("exposure_posterior_seed",run_params$seed,".pdf"),width = 20,height=20)
+pdf(file="exposure_posterior_seed.pdf",width = 20,height=20)
 
 par(mfrow=c(5,5))
 
@@ -136,7 +133,7 @@ for(i in 1:ncol(t_e_current)){
 
 dev.off()
 
-pdf(file=paste0("exposure_trace_seed",run_params$seed,".pdf"),width = 20,height=20)
+pdf(file="exposure_traceplots.pdf",width = 20,height=20)
 
 par(mfrow=c(5,5))
 
@@ -166,9 +163,9 @@ abline(h=true_params$k_1,col="blue")
 
 if("lambda" %in% names(params_current)){
   hist(params_current$lambda,main=expression(lambda),xlab="")
-  abline(v=(true_params$mu_1+2*true_params$mu_2)*run_params$nbase,col="blue",lty=2)
+  abline(v=(true_params$mu_1+2*true_params$mu_2)*aux_params$n_base,col="blue",lty=2)
   plot(params_current$lambda,xlab="",type="l",main=expression(lambda),ylab="")
-  abline(h=(true_params$mu_1+2*true_params$mu_2)*run_params$nbase,col="blue",lty=2)
+  abline(h=(true_params$mu_1+2*true_params$mu_2)*aux_params$n_base,col="blue",lty=2)
 } else{
   
 }

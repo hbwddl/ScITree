@@ -1,0 +1,2 @@
+alpha_sf,beta_sf,mu_lat_sf,var_lat_sf,c_sf,d_sf,k_1_sf,mu_1_sf,mu_2_sf,p_ber_sf,phi_inf1_sf,phi_inf2_sf,rho_susc1_sf,rho_susc2_sf,nu_inf_sf,tau_susc_sf,beta_m_sf
+0.00015,4.4,2,1,1.25,0.75,0.01,0.2,2.5e-06,0.02,1.75,1.5,1,1.25,0.25,0.25,1

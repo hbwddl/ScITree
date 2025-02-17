@@ -3,7 +3,7 @@ library(ScTree)
 library(ggplot2)
 library(ape)
 
-root_dir <- "./REPLACE/"
+root_dir <- "/Users/hbwadde/Documents/Research/Phylodynamics/BORIS2_Results/"
 
 seed <- 1
 cluster <- F
@@ -814,7 +814,6 @@ row.names(seq_mat)<- paste0(epi.data$k, "_", round(sim.out$t_sample,0))
 if(!dir.exists("../Infer_Test/gen_inputs")) {
   dir.create("../Infer_Test/gen_inputs")
 }
-
 
 #write these out to a fasta file in the dnaPath directory
 library(ape)

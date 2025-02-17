@@ -1,0 +1,2 @@
+n,seed,n_base,n_seq,t_max,unassigned_time,sample_range,partial_seq_out,n_base_part,n_index,coord_type,kernel_type,latent_type,opt_k80,opt_betaij,opt_mov,n_mov,debug
+150,108,8000,5,100,9e+06,10,0,8000,1,cartesian,exponential,gamma,0,0,0,60,0

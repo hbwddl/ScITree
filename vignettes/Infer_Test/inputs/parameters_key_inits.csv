@@ -1,0 +1,2 @@
+alpha,beta,lat_mu,lat_var,c,d,k_1,mu_1,mu_2,p_ber,phi_inf1,phi_inf2,rho_susc1,rho_susc2,nu_inf,tau_susc,beta_m
+1e-04,4,10,0.5,4,4,0.04,0.001,0.00025,2e-04,3,1.5,0.4,2,0.2,0.1,1
