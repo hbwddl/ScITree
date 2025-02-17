@@ -21,27 +21,18 @@ library(ScTree)
 library(ggplot2)
 library(ape)
 library(dplyr)
+
+base_dir <- "~/Documents/Research/Phylodynamics/ScTree/vignettes/"
+
+knitr::opts_knit$set(root.dir = base_dir)
 ```
 
 To use this vignette, first set the starting directory on your computer. This vignette will create a directory for the simulation and a directory for the inference.
 
 ```{r}
 ## Run setup
-## Necessary directories + simulation seed
-base_dir <- "~/Documents/Research/Phylodynamics/ScTree/vignettes/"
+## Simulation seed
 random_seed <- 108
-
-dirname <- paste0(base_dir,"sim_test_seed_",random_seed)
-
-dirname <- base_dir
-
-if(!dir.exists(dirname)){
-  dir.create(dirname)
-}
-
-setwd(dirname)
-
-knitr::opts_knit$set(root.dir = dirname)
 
 set.seed(seed=random_seed)
 ```
@@ -113,8 +104,8 @@ sim.epi.data <- sim.epi.data[,names(sim.epi.input)]
 The following parameters govern the number of MCMC iterations, plus the frequency of output.
 
 ```{r}
-niter = 50 # Number of iterations
-nfrequ = max(round(n_pop/3),1) # Number of individuals to update at each iteration
+niter = 20 # Number of iterations
+nfrequ = round(niter/2) # Number of individuals to update at each iteration
 noutputsource = max(round(niter/10000),1) # Frequency of source output
 noutputgm = max(round(niter/1000),1) # Frequency of grand master sequence output (not used)
 ncout = max(round(niter/1000),1) # Frequency of console output
@@ -166,18 +157,12 @@ if(!dir.exists("./Sim_Test")){
   dir.create("./Sim_Test")
 }
 
-setwd("./Sim_Test")
 knitr::opts_knit$set(root.dir = "./Sim_Test")
-
-
 ```
 
 We now simulate the outbreak.
 
 ```{r}
-setwd("./Sim_Test")
-knitr::opts_knit$set(root.dir = "./Sim_Test")
-
 sim.out <- sim(epi.inputs = sim.epi.data,
                moves.inputs = sim.moves.input,
                parsKey = para.key,
@@ -189,8 +174,6 @@ sim.out <- sim(epi.inputs = sim.epi.data,
 We have now simulated our outbreak, and we make a quick summary.
 
 ```{r}
-setwd("./Sim_Test")
-knitr::opts_knit$set(root.dir = "./Sim_Test")
 arrow_outbreak_plot <- function(epi.data,true.source.c,t.max=100){
   epi.data.df <- as.data.frame(epi.data)
   true_source_r <- true.source.c + 1
@@ -243,8 +226,6 @@ countSEIR <- function(te,ti,tr,tmax.outbreak=100){
   return(data.frame(time=tpoints,NS=ns,NE=ne,NI=ni,NR=nr))
 }
 
-print(getwd())
-
 sim_data <- read.csv("./outputs/epi_sim.csv")
 
 seir_count <- countSEIR(sim_data$t_e,sim_data$t_i,sim_data$t_r,tmax)
@@ -262,9 +243,6 @@ We now prepare to set up our inference. We will prepare the genetic data input t
 A ScITree inference takes a .FASTA file of sampled genetic sequences as input, with the names of the sequences denoting the individual's index number and the time of sampling.
 
 ```{r}
-setwd(base_dir)
-setwd("./Sim_Test")
-
 dir.create("../Infer_Test")
 
 fn <- paste0(sim.out$outputPath, "subject_0_nt.txt")
@@ -436,9 +414,6 @@ para.sf <- data.frame('alpha_sf' = para.key$alpha*1.5,
 We now create the .FASTA file with the sampled sequences.
  
 ```{r}
-setwd(base_dir)
-setwd("./Sim_Test/")
-
 t_sample <- sim.out$t_sample
 
 no.genome <- which(t_sample == pars.aux$unassigned_time)
@@ -479,9 +454,6 @@ seq_mat[seq_mat==4]<-"c"
 #and time of sampling. These will be used as tip labels
 row.names(seq_mat)<- paste0(epi.data$k, "_", round(sim.out$t_sample,0))
 
-setwd(base_dir)
-setwd("./Sim_Test/")
-
 if(!dir.exists("../Infer_Test/gen_inputs")) {
   dir.create("../Infer_Test/gen_inputs")
 }
@@ -490,10 +462,12 @@ write.dna(seq_mat, file='../Infer_Test/gen_inputs/seqs.fasta', format = 'fasta',
 
 
 ```
+```{r}
+knitr::opts_knit$set(root.dir = base_dir)
+knitr::opts_knit$set(root.dir = "./Infer_Test/")
+```
 
 ```{r}
-setwd(base_dir)
-setwd("./Infer_Test/")
 pars.aux$n_iterations = niter
 pars.aux$n_frequ = nfrequ
 pars.aux$n_output_source = noutputsource
@@ -522,9 +496,6 @@ We summarize the inference with several included R scripts.
 The parameter_capture.R file examines the scalar parameter MCMC, the posterior_tree_capture.R file examines the identification of the correct source, and the bubble_plot.R file maps the percent correct posterior identification of infection sources.
 
 ```{r}
-setwd(base_dir)
-setwd("./Infer_Test/")
-
 source("../../test/parameter_capture.R")
 source("../../test/posterior_tree_capture.R")
 source("../../test/bubble_plot.R")
