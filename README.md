@@ -16,5 +16,4 @@ This repository contains the R package (developed with Rcpp) to fit the ScTree m
 install.packages("ScITree_1.1.0.tar.gz",type="source",repos=NULL)
 ```
 
-
-An example script, which will run the inference on your own machine, is in vignettes/
+A vignette, which will run the inference on your own machine, as well as some accompanying R code, is in ./doc/
