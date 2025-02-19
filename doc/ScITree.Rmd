@@ -467,7 +467,7 @@ knitr::opts_knit$set(root.dir = base_dir)
 knitr::opts_knit$set(root.dir = "./Infer_Test/")
 ```
 
-```{r}
+```{r results='hide'}
 pars.aux$n_iterations = niter
 pars.aux$n_frequ = nfrequ
 pars.aux$n_output_source = noutputsource

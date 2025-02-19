@@ -401,7 +401,7 @@ write.dna(seq_mat, file='../Infer_Test/gen_inputs/seqs.fasta', format = 'fasta',
 knitr::opts_knit$set(root.dir = base_dir)
 knitr::opts_knit$set(root.dir = "./Infer_Test/")
 
-## -----------------------------------------------------------------------------
+## ----results='hide'-----------------------------------------------------------
 pars.aux$n_iterations = niter
 pars.aux$n_frequ = nfrequ
 pars.aux$n_output_source = noutputsource
