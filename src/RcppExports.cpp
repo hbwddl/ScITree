@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // infer_cpp
 Rcpp::List infer_cpp();
-RcppExport SEXP _ScTree_infer_cpp() {
+RcppExport SEXP _ScITree_infer_cpp() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -22,7 +22,7 @@ END_RCPP
 }
 // sim_cpp
 Rcpp::List sim_cpp();
-RcppExport SEXP _ScTree_sim_cpp() {
+RcppExport SEXP _ScITree_sim_cpp() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -32,7 +32,7 @@ END_RCPP
 }
 // full_likelihood
 double full_likelihood();
-RcppExport SEXP _ScTree_full_likelihood() {
+RcppExport SEXP _ScITree_full_likelihood() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -42,13 +42,13 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_ScTree_infer_cpp", (DL_FUNC) &_ScTree_infer_cpp, 0},
-    {"_ScTree_sim_cpp", (DL_FUNC) &_ScTree_sim_cpp, 0},
-    {"_ScTree_full_likelihood", (DL_FUNC) &_ScTree_full_likelihood, 0},
+    {"_ScITree_infer_cpp", (DL_FUNC) &_ScITree_infer_cpp, 0},
+    {"_ScITree_sim_cpp", (DL_FUNC) &_ScITree_sim_cpp, 0},
+    {"_ScITree_full_likelihood", (DL_FUNC) &_ScITree_full_likelihood, 0},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_ScTree(DllInfo *dll) {
+RcppExport void R_init_ScITree(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

@@ -1,5 +1,5 @@
 #' @export
-#' @useDynLib ScTree, .registration = TRUE
+#' @useDynLib ScITree, .registration = TRUE
 #' @importFrom ape read.dna
 #' @importFrom utils write.table
 infer.default <- function(covariates = NULL,

@@ -2,14 +2,14 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 infer_cpp <- function() {
-    .Call(`_ScTree_infer_cpp`)
+    .Call(`_ScITree_infer_cpp`)
 }
 
 sim_cpp <- function() {
-    .Call(`_ScTree_sim_cpp`)
+    .Call(`_ScITree_sim_cpp`)
 }
 
 full_likelihood <- function() {
-    .Call(`_ScTree_full_likelihood`)
+    .Call(`_ScITree_full_likelihood`)
 }
 

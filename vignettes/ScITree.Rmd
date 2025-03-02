@@ -2,7 +2,7 @@
 title: "ScITree"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ScTree}
+  %\VignetteIndexEntry{ScITree}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,13 +16,13 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 ## Necessary packages
-library(ScTree)
+library(ScITree)
 
 library(ggplot2)
 library(ape)
 library(dplyr)
 
-base_dir <- "~/Documents/Research/Phylodynamics/ScTree/vignettes/"
+base_dir <- "~/Documents/Research/Phylodynamics/ScITree/vignettes/"
 
 knitr::opts_knit$set(root.dir = base_dir)
 ```

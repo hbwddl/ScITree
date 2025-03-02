@@ -1,8 +1,8 @@
-Package: ScTree
+Package: ScITree
 Type: Package
 Title: Scalable and robust mechanistic integration of epidemiological and genomic data for transmission tree inference
 Version: 1.1.0
-Date: 2024-11-15
+Date: 2025-03-02
 Authors@R: c(
     person(given = "Waddel",
            family = "Hannah",
