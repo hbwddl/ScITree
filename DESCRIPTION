@@ -20,7 +20,7 @@ Maintainer@R: person(given = "Hannah",
                      family = "Waddel",
                      email = "hannah.b.waddel@emory.edu")
 Description: Scalable and robust mechanistic integration of epidemiological and genomic data for transmission tree inference. Implementation of inference procedure described in Waddel et al., simulation from the epidemiological-evolutionary model from described in Lau et al. (2015).
-License: GPL (>= 2) | file LICENSE
+License: CC BY 4.0
 Imports: ape, coda, grDevices, Rcpp (>= 1.0.0), utils
 LinkingTo: Rcpp, BH
 SystemRequirements: C++11
