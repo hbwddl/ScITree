@@ -3199,12 +3199,6 @@
         "hidden": false
     },
     {
-        "file": "/Users/hbwadde/Documents/Research/Phylodynamics/ScITree/src/ScITree_log_lh.cpp",
-        "file_last_write": 1720476596.0,
-        "definitions": [],
-        "hidden": false
-    },
-    {
         "file": "/Users/hbwadde/Documents/Research/Phylodynamics/ScITree/src/ScITree_src.cpp",
         "file_last_write": 1730922331.0,
         "definitions": [

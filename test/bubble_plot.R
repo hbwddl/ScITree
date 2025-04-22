@@ -66,7 +66,9 @@ bubble_plot <- epi_data %>% ggplot(aes(x=coor_x,y=coor_y,alpha=0.83)) +
   theme_classic() +
   geom_point(data=subset(epi_data,true_source==9999),shape=3) +
   labs(size="Percent Correct") +
-  guides(colour="none",is_infected="none",alpha="none")
+  guides(colour="none",is_infected="none",alpha="none") +
+  xlab("X") +
+  ylab("Y")
 
 bubble_plot_arrow <- epi_data %>% ggplot(aes(x=coor_x,y=coor_y,alpha=0.83)) +
   geom_point(mapping=aes(colour=is_infected)) +
@@ -80,7 +82,9 @@ bubble_plot_arrow <- epi_data %>% ggplot(aes(x=coor_x,y=coor_y,alpha=0.83)) +
   labs(linewidth="Percent Correct") +
   geom_segment(aes(x=arrow_start_x,y=arrow_start_y,xend=coor_x,yend=coor_y,linewidth=pct_correct),arrow=arrow(length=unit(0.2,'cm')),color="darkblue") +
   scale_linewidth_continuous(range=c(0.25,2)) +
-  guides(colour="none",is_infected="none",alpha="none")
+  guides(colour="none",is_infected="none",alpha="none") +
+  xlab("X") +
+  ylab("Y")
 
 pdf(file="./bubble_plot.pdf",width=8,height=8)
 print(bubble_plot)
@@ -98,7 +102,9 @@ bubble_plot <- epi_data %>% ggplot(aes(x=coor_x,y=coor_y,alpha=0.83)) +
   theme_classic() +
   geom_point(data=subset(epi_data,true_source==9999),shape=3) +
   labs(size="Percent Correct") +
-  guides(colour="none",is_infected="none",alpha="none")
+  guides(colour="none",is_infected="none",alpha="none") +
+  xlab("X") +
+  ylab("Y")
 
 bubble_plot_arrow <- epi_data %>% ggplot(aes(x=coor_x,y=coor_y,alpha=0.83)) +
   geom_point(mapping=aes(colour=is_infected)) +
@@ -112,7 +118,9 @@ bubble_plot_arrow <- epi_data %>% ggplot(aes(x=coor_x,y=coor_y,alpha=0.83)) +
   labs(linewidth="Percent Correct") +
   geom_segment(aes(x=arrow_start_x,y=arrow_start_y,xend=coor_x,yend=coor_y,linewidth=pct_correct),arrow=arrow(length=unit(0.15,'cm')),color="darkblue") +
   scale_linewidth_continuous(range=c(0.25,2)) +
-  guides(colour="none",is_infected="none",alpha="none")
+  guides(colour="none",is_infected="none",alpha="none") +
+  xlab("X") +
+  ylab("Y")
 
 hist(pct_correct)
 

@@ -66,50 +66,9 @@ inf_correct <- sum((max_post_prob == true_source_9999)[which_infected])/length(w
 which_correct_inf <- intersect(which(max_post_prob == true_source_9999),which_infected)
 
 which_incorrect <- which(max_post_prob != true_source_9999)
-print("which incorrect (c index)")
-print(paste0(which_incorrect-1,collapse=", "))
-print("true source")
-print(true_source_9999[which_incorrect])
-print("estimated source")
-print(max_post_prob[which_incorrect])
 
-print("Percent of posterior, first most likely, incorrect")
-print(pct_top2[which_incorrect,1])
-
-print("Percent of posterior, second most likely")
-print(pct_top2[which_incorrect,2])
-
-print("% correct, highest posterior, all")
+print("Percent correct source, maximum posterior probability")
 print(inf_correct)
-print(paste0("Fraction: ",sum((max_post_prob == true_source_9999)[which_infected]),"/",length(which_infected)))
-
-print("% of posterior probabilities, highest posterior, all")
-print(pct_top2[which_infected,1])
-
-print("% correct, highest + second highest posterior, all")
-two_correct = sum(((max_post_prob == true_source_9999) | (second_post_prob == true_source_9999))[which_infected],na.rm=T)/length(which_infected)
-print(two_correct)
-print(paste0("Fraction: ",sum(((max_post_prob == true_source_9999) | (second_post_prob == true_source_9999))[which_infected],na.rm=T),"/",length(which_infected)))
-
-print("% of posterior probabilities, second highest posterior, all")
-print(pct_top2[which_infected,2])
-
-print("% correct, primary infection")
-which_primary = which(true_source == 9999)
-print(sum((max_post_prob == true_source_9999)[which_primary])/length(which_primary))
-print(paste0("Fraction: ",sum((max_post_prob == true_source_9999)[which_primary]),"/",length(which_primary)))
-
-print("% correct, secondary infection")
-which_2ndary = which(true_source >= 0 & true_source != 9999)
-print(sum((max_post_prob == true_source_9999)[which_2ndary])/length(which_2ndary))
-print(paste0("Fraction: ",sum((max_post_prob == true_source_9999)[which_2ndary]),"/",length(which_2ndary)))
-
-print("% posterior, correct max posterior probability")
-print(pct_top2[which_correct_inf,])
-
-print("% posterior, incorrect first correct second")
-which_2corr = which((max_post_prob != true_source_9999) & (second_post_prob == true_source_9999))
-print(pct_top2[which_2corr,])
 
 # #### Count correct % by iteration, get posterior
 is_perfect <- rep(NA,nrow(inf_source_burnin))
@@ -130,9 +89,6 @@ plot(pct_correct,main="Percent correct",xlab="Iteration",ylab="Percent",type="l"
 hist(pct_correct,main="Percent correct each iteration")
 plot(pct_correct,main="Percent correct",xlab="Iteration",ylab="Percent",type="l")
 dev.off()
-
-print("perfect trees")
-print(sum(is_perfect)/nrow(inf_source_burnin))
 
 ### Source trace
 inf_source_negative <- inf_source_burnin
@@ -189,8 +145,6 @@ n_cluster <- sum(source_true == 9999)
 n_cluster_true <- sum(epi.data$source_true == 9999 & epi.data$t_e <= params_other$t_max)
 n_cluster_estimate <- sum(epi.data$source_estimate == 9999 & epi.data$t_e <= params_other$t_max)
 
-print("Number of clusters estimates, true/estimated")
-print(c(n_cluster_true,n_cluster_estimate))
 
 estimate_plot_arrow <- epi.data %>% ggplot(aes(x=coor_x,y=coor_y)) +
   geom_point() +
@@ -211,9 +165,11 @@ print(estimate_plot_arrow)
 dev.off()
 
 ### Number of clusters
+print("Number of clusters:")
+
 print(paste0("True: ",sum(true_source_9999 == 9999)))
 print(paste0("Estimated: ",sum(max_post_prob[which_infected] == 9999)))
 
 png("n_cluster_mcmc.png",width=700,height=700,res=100)
-plot(n_cluster_mcmc,type="l",main="Number of clusters each iteration")
+plot(n_cluster_mcmc,type="l",main="Number of clusters each iteration",ylab="N Clusters")
 dev.off()

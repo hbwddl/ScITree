@@ -16,7 +16,7 @@ params_current <- raw_params
 
 params.mcmc <- as.mcmc(true_params)
 
-pdf("params_posterior_traceplots.pdf",width=15,height=15)
+pdf("params_posterior_plots.pdf",width=15,height=15)
 par(mfrow=c(3,3))
 
 hist(params_current$alpha,main=paste0("alpha = ",true_params$alpha),xlab="")

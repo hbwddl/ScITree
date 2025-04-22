@@ -1,9 +1,3 @@
-## ---- include = FALSE---------------------------------------------------------
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-
 ## ----setup--------------------------------------------------------------------
 ## Necessary packages
 library(ScTree)
@@ -12,9 +6,9 @@ library(ggplot2)
 library(ape)
 library(dplyr)
 
-base_dir <- "~/Documents/Research/Phylodynamics/ScTree/vignettes/"
+base_dir <- "~/Documents/Research/Phylodynamics/ScITree/vignettes/"
 
-knitr::opts_knit$set(root.dir = base_dir)
+setwd(base_dir)
 
 ## -----------------------------------------------------------------------------
 ## Run setup
@@ -116,7 +110,7 @@ if(!dir.exists("./Sim_Test")){
   dir.create("./Sim_Test")
 }
 
-knitr::opts_knit$set(root.dir = "./Sim_Test")
+setwd("./Sim_Test")
 
 ## -----------------------------------------------------------------------------
 sim.out <- sim(epi.inputs = sim.epi.data,
@@ -398,8 +392,8 @@ write.dna(seq_mat, file='../Infer_Test/gen_inputs/seqs.fasta', format = 'fasta',
 
 
 ## -----------------------------------------------------------------------------
-knitr::opts_knit$set(root.dir = base_dir)
-knitr::opts_knit$set(root.dir = "./Infer_Test/")
+setwd(base_dir)
+setwd("./Infer_Test/")
 
 ## ----results='hide'-----------------------------------------------------------
 pars.aux$n_iterations = niter
