@@ -3,6 +3,17 @@ ScITree: R package for scalable and robust mechanistic integration of epidemiolo
   
 This repository contains the R package (developed with Rcpp) to fit the ScITree method.
 
+### Required packages
+
+The following packages are required to be installed in order to install and run the example code for ScITree. However, they should be loaded automatically upon installing ScITree:
+
+- ape
+- coda
+- grDevices
+- Rcpp (>= 1.0.0)
+- utils
+- BH 
+
 ### To build and load the package via RStudio:
 
 - Load the ScITree.Rproj file, then build the package in the "build" tab and install.
