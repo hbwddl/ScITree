@@ -1,12 +1,16 @@
 ## ----setup--------------------------------------------------------------------
 ## Necessary packages
-library(ScTree)
+library(ScITree)
 
 library(ggplot2)
 library(ape)
 library(dplyr)
 
-base_dir <- "your/directory/here"
+## Directory in which you want to store your analysis and results
+base_dir <- "results/directory/here"
+
+## Directory in which the 'test' scripts are located
+test_dir <- "test/directory/here"
 
 setwd(base_dir)
 
@@ -419,7 +423,8 @@ infer.out<-infer(covariates = epi.data,
 sink(file=NULL)
 
 ## -----------------------------------------------------------------------------
-source("../../test/parameter_capture.R")
-source("../../test/posterior_tree_capture.R")
-source("../../test/bubble_plot.R")
+
+source(file.path(test_dir,"/parameter_capture.R"))
+source(file.path(test_dir,"/posterior_tree_capture.R"))
+source(file.path(test_dir,"/bubble_plot.R"))
 

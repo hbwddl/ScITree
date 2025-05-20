@@ -1,4 +1,6 @@
-.Rproj.user/
+.Rproj.user
+.Rproj.user/*
+.Rproj.user/F6075EA9/
 .Rhistory
 .RData
 .Ruserdata
@@ -8,3 +10,7 @@ src/*.dll
 inst/doc
 /Meta/
 /doc/
+*.pper
+.Rproj.user/F6075EA9/persistent-state
+.Rproj.user/F6075EA9/pcs/windowlayoutstate.pper
+.Rproj.user/F6075EA9/pcs/source-pane.pper

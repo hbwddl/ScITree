@@ -163,13 +163,3 @@ pdf(file="most_probable_tree_accuracy.pdf",width=12,height=8)
 print(estimate_plot_arrow)
 
 dev.off()
-
-### Number of clusters
-print("Number of clusters:")
-
-print(paste0("True: ",sum(true_source_9999 == 9999)))
-print(paste0("Estimated: ",sum(max_post_prob[which_infected] == 9999)))
-
-png("n_cluster_mcmc.png",width=700,height=700,res=100)
-plot(n_cluster_mcmc,type="l",main="Number of clusters each iteration",ylab="N Clusters")
-dev.off()
