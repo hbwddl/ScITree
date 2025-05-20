@@ -27,4 +27,4 @@ The following packages are required to be installed in order to install and run 
 install.packages("ScITree_1.1.0.tar.gz",type="source",repos=NULL)
 ```
 
-Some example scripts, which will run a short analysis on your machine and summarize its results, are in the ./test/ directory. You may source() the "simulation_inference_analysis.R" file after altering the base directory at the head of the script.
+Some example scripts, which will run a short analysis on your machine and summarize its results, are in the ./test/ directory. You may source() the "simulation_inference_analysis.R" file after altering the base directory and test directory at the head of the script.
